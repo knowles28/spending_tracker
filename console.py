@@ -1,0 +1,12 @@
+import pdb
+from models.merchant import Merchant
+from models.tag import Tag
+import repositories.merchant_repository as merchant_repository
+import repositories.tag_repository as tag_repository
+
+
+merchant1 = Merchant('Sainsburys')
+merchant_repository.save(merchant1)
+
+tag1 = Tag('Groceries')
+tag_repository.save(tag1)
