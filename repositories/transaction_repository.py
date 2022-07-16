@@ -4,8 +4,11 @@ from models.transaction import Transaction
 
 
 def save(transaction):
-    sql = "INSERT INTO transactions (merchant, description, tag, date, price) VALUES (%s, %s, %s, %s, %s) RETURNING *"
-    values = [transaction.description]
+    sql = """
+    
+    INSERT INTO transactions(merchant_id, description, tag_id, _date, price) VALUES (%s, %s, %s, %s, %s) RETURNING *
+    """
+    values = [transaction.merchant_id, transaction.description, transaction.tag_id, transaction._date, transaction.price]
     results = run_sql(sql, values)
     transaction.id = results[0]['id']
     return transaction
@@ -17,34 +20,8 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        transaction = transaction(row['merchant'], row['description'], row['tag'], row['date'], row['price'], row['id'])
+        transaction = Transaction( row['id'], row['merchant_id'], row['description'], row['tag_id'], row['_date'], row['price'])
         transactions.append(transaction)
     
     return transactions
-
-# def select(id):
-#     transaction = None
-#     sql = "SELECT * from transactions WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
-    
-#     # note to self - if statement without condition checks variable is not empty
-#     if results:
-#         result = results[0]
-#         transaction = transaction(result['description'], result['id'])
-    
-#     return transaction
-        
-        
-
-# def update(transaction):
-#     sql = "UPDATE transactions SET description = %s WHERE id = %s"
-#     values = [transaction.description, transaction.id]
-#     run_sql(sql, values)
-
-
-# def delete(id):
-#     sql = "DELETE FROM transactions WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
 

@@ -7,6 +7,7 @@ CREATE TABLE tags (
     name VARCHAR(255)
 );
 
+
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255)
@@ -17,6 +18,6 @@ CREATE TABLE transactions (
     merchant_id INT NOT NULL REFERENCES merchants(id),
     description VARCHAR(255),
     tag_id INT NOT NULL REFERENCES tags(id),
-    date DATE,
+    _date DATE,
     price FLOAT
-    );
+);
