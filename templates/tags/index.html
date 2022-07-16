@@ -4,7 +4,29 @@
 
 <h1> My Tags</h1>
 
-<p> Tag list goes here</p>
+<div class="new-button">
+    <button><a href="/tags/new">Add New</a></button>
+</div>
+
+<div class="list-block">
+    <ul>
+        {% for tag in all_tags %}
+                <li>Name: <b>{{ tag.name }}</b> </li>
+
+                <div class="buttons">
+                    <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
+                        <button>Update</button>
+                    </form>
+
+                <div class="buttons">
+                    <form class="delete-button" action="/tags/{{tag.id}}/delete" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+        {% endfor %}
+        
+    </ul>
+</div>
 
     
 {% endblock content %}
