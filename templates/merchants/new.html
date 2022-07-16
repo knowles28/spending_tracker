@@ -2,7 +2,17 @@
 
 {% block content %}
 
-<!-- NEW ITEM GOES HERE -->
+<h1> Add a new Merchant</h1>
 
+<div class="new-form">
+    <form action="/merchants" method="post">
+
+        <label for="merchant-name">Name: </label>
+        <input type="text" id="name" name="merchant-name" placeholder="Add the Merchant" required autofocus>
+        <br>
+        <button type="submit">Add</button>
+
+    </form>
+</div>
 
 {% endblock content %}
