@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<!-- INDIVIDUAL ITEM GOES HERE -->
+<div class="new-form">
+    <form action="/merchants/{{merchant.id}}" method="post">
 
+        <label for="merchant-name">Name: </label>
+        <input type="text" id="name" name="merchant-name" value="{{merchant.name}}" required autofocus>
+        <br>
+        <button type="submit">Update</button>
+
+    </form>
+</div>
 
 {% endblock content %}

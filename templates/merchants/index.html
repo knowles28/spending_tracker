@@ -5,13 +5,19 @@
 <h1>Merchants</h1>
 
 <div class="new-button">
-    <a href="/merchants/new">Add Merchant</a>
+    <button><a href="/merchants/new">Add New</a></button>
 </div>
 
 <div class="list-block">
     <ul>
         {% for merchant in all_merchants %}
-                <li><b>Name:</b> {{ merchant.name }} </li>
+                <li>Name: <b>{{ merchant.name }}</b> </li>
+
+                <div class="buttons">
+                    <form class="update-button" action="/merchants/{{merchant.id}}/edit" method="post">
+                        <button>Update</button>
+                    </form>
+
                 <div class="buttons">
                     <form class="delete-button" action="/merchants/{{merchant.id}}/delete" method="post">
                         <button>Delete</button>
