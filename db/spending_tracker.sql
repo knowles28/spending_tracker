@@ -14,9 +14,9 @@ CREATE TABLE merchants (
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
-    description VARCHAR(255),
-    price FLOAT,
-    date DATE,
     merchant_id INT NOT NULL REFERENCES merchants(id),
-    tag_id INT NOT NULL REFERENCES tags(id)
-)
+    description VARCHAR(255),
+    tag_id INT NOT NULL REFERENCES tags(id),
+    date DATE,
+    price FLOAT
+    );

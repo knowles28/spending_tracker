@@ -4,7 +4,29 @@
 
 <h1>Dashboard</h1>
 
-<p> List of transactions goes here</p>
+<div class="new-button">
+    <button><a href="/transactions/new">Add New</a></button>
+</div>
+
+<div class="list-block">
+    <ul>
+        {% for transaction in all_transactions %}
+                <li> {{ transaction.merchant }} Description: <b>{{ transaction.description }}</b> Price: {{ transaction.price }} </li>
+
+                <div class="buttons">
+                    <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
+                        <button>Update</button>
+                    </form>
+
+                <div class="buttons">
+                    <form class="delete-button" action="/transactions/{{transaction.id}}/delete" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+        {% endfor %}
+        
+    </ul>
+</div>
 
     
 {% endblock content %}

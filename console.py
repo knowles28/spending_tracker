@@ -24,3 +24,4 @@ tag_repository.save(tag2)
 
 tag3 = Tag('Transport')
 tag_repository.save(tag3)
+

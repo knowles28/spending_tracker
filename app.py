@@ -3,6 +3,7 @@ from flask import Flask, render_template
 # CONTROLLER IMPORTS
 from controllers.merchant_controller import merchants_blueprint
 from controllers.tag_controller import tags_blueprint
+from controllers.transaction_controller import transactions_
 
 app = Flask(__name__)
 
