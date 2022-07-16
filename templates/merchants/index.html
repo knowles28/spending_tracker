@@ -12,6 +12,11 @@
     <ul>
         {% for merchant in all_merchants %}
                 <li><b>Name:</b> {{ merchant.name }} </li>
+                <div class="buttons">
+                    <form class="delete-button" action="/merchants/{{merchant.id}}/delete" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
         {% endfor %}
         
     </ul>
