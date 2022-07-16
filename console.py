@@ -8,5 +8,11 @@ import repositories.tag_repository as tag_repository
 merchant1 = Merchant('Sainsburys')
 merchant_repository.save(merchant1)
 
+merchant2 = Merchant('Tesco')
+merchant_repository.save(merchant2)
+
+merchant3 = Merchant('Coop')
+merchant_repository.save(merchant3)
+
 tag1 = Tag('Groceries')
 tag_repository.save(tag1)

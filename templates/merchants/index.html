@@ -4,7 +4,14 @@
 
 <h1>Merchants</h1>
 
-<p> Merchant list goes here</p>
+<div class="list-block">
+    <ul>
+        {% for merchant in all_merchants %}
+                <li><b>Name:</b> {{ merchant.name }} </li>
+        {% endfor %}
+        
+    </ul>
+</div>
 
     
 {% endblock content %}

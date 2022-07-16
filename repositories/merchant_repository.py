@@ -9,7 +9,7 @@ def save(merchant):
     merchant.id = results[0]['id']
     return merchant
 
-def select_all(merchant):
+def select_all():
     merchants = []
     sql = "SELECT * FROM merchants"
     results = run_sql(sql)
