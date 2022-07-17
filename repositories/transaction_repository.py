@@ -26,7 +26,7 @@ def select_all():
     for row in results:
         merchant = merchant_repository.select(row['merchant_id'])
         tag = tag_repository.select(row['tag_id'])
-        transaction = Transaction(merchant, row['description'], tag, row['price'])
+        transaction = Transaction(merchant, row['description'], tag, row['price'], row['id'])
         transactions.append(transaction)
     
     return transactions
@@ -44,7 +44,6 @@ def select(id):
         tag = tag_repository.select(result['tag_id'])
         
         transaction = Transaction(merchant, result['description'], tag, result['price'], result['id'])
-    breakpoint()
     return transaction
 
         
@@ -63,13 +62,16 @@ def delete(id):
 
 
 def transactions_total():
-    total = 0
     
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT SUM(price) FROM transactions"
     results = run_sql(sql)
     
-    for row in results:
-        total += Transaction(row['price'])
+
+    
+    return float(results)
+  
+    
+print(transactions_total)
     
 
 

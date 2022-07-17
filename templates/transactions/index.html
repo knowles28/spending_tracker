@@ -4,9 +4,16 @@
 
 <h1>Dashboard</h1>
 
+<div class="total-transactions">
+    TOTAL: {{ print(total_transactions) }}
+</div>
+
+<br>
+
 <div class="new-button">
     <button><a href="/transactions/new">Add New</a></button>
 </div>
+
 
 <div class="list-block">
     <ul>
@@ -14,7 +21,7 @@
                 <li> <b>{{ transaction.merchant.name }}:</b> {{ transaction.description }} <i>'{{ transaction.tag.name }}'</i> | {{ transaction.date }} | <b>£{{ transaction.price }}</b> </li>
 
                 <div class="buttons">
-                    <form class="update-button" action="/transactions/{{ transaction.id }}/edit" method="post">
+                    <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
                         <button>Update</button>
                     </form>
 
