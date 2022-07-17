@@ -5,7 +5,7 @@
 <h1>Dashboard</h1>
 
 <div class="total-transactions">
-    TOTAL: {{ total }}
+    TOTAL: £{{ total }}
 </div>
 
 <br>
@@ -18,17 +18,24 @@
 <div class="list-block">
     <ul>
         {% for transaction in all_transactions %}
-                <li> <b>{{ transaction.merchant.name }}:</b> {{ transaction.description }} <i>'{{ transaction.tag.name }}'</i> | {{ transaction.date }} | <b>£{{ transaction.price }}</b> </li>
+                <li class="list-item">
+                <b>{{ transaction.tag.name }} - {{ transaction.merchant.name }} : </b>  <i> '{{ transaction.description }}' </i> |  &nbsp; &nbsp; &nbsp; {{ transaction.date }} |  <b>£{{ transaction.price }}</b>
+                <br>
+                
+                </li>
 
                 <div class="buttons">
                     <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
                         <button>Update</button>
+                        <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
+                            <button>Delete</button>
+                        </form>
                     </form>
 
                 <div class="buttons">
-                    <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
-                        <button>Delete</button>
-                    </form>
+
+                    <br>
+
                 </div>
         {% endfor %}
         

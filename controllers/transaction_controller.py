@@ -31,8 +31,9 @@ def create_transaction():
     description = request.form['description']
     tag_id      = request.form['tag_id']
     price       = request.form['price']
+    date        = request.form['date']
     
-    transaction = Transaction(merchant_id, description, tag_id, price)
+    transaction = Transaction(merchant_id, description, tag_id, price, date)
     transaction_repository.save(transaction)
     
     return redirect("/transactions")
@@ -54,8 +55,10 @@ def update_transaction(id):
     description = request.form['description']
     tag_id      = request.form['tag_id']
     price       = request.form['price']
+    date        = request.form['date']
 
-    transaction = Transaction(merchant_id, description, tag_id, price, id)
+
+    transaction = Transaction(merchant_id, description, tag_id, price, date, id)
     transaction_repository.update(transaction)    
     return redirect("/transactions")
 
