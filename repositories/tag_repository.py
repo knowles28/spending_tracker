@@ -3,8 +3,8 @@ from db.run_sql import run_sql
 from models.tag import Tag
 
 def save(tag):
-    sql = "INSERT INTO tags (tag_name) VALUES (%s) RETURNING *"
-    values = [tag.tag_name]
+    sql = "INSERT INTO tags (name) VALUES (%s) RETURNING *"
+    values = [tag.name]
     results = run_sql(sql, values)
     tag.id = results[0]['id']
     return tag
@@ -15,7 +15,7 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        tag = Tag(row['tag_name'], row['id'])
+        tag = Tag(row['name'], row['id'])
         tags.append(tag)
     
     return tags
@@ -29,15 +29,15 @@ def select(id):
     # note to self - if statement without condition checks variable is not empty
     if results:
         result = results[0]
-        tag = Tag(result['tag_name'], result['id'])
+        tag = Tag(result['name'], result['id'])
     
     return tag
         
         
 
 def update(tag):
-    sql = "UPDATE tags SET tag_name = %s WHERE id = %s"
-    values = [tag.tag_name, tag.id]
+    sql = "UPDATE tags SET name = %s WHERE id = %s"
+    values = [tag.name, tag.id]
     run_sql(sql, values)
 
 

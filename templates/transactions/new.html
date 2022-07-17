@@ -2,7 +2,49 @@
 
 {% block content %}
 
-<!-- NEW ITEM GOES HERE -->
+<h1> New Transaction</h1>
+
+<div class="new-form">
+    <form action="/transactions" method="post">
+
+        <div>
+           <label for="merchant"> Merchant:</label>
+           <select name="merchant_id" id="merchant" required>
+            {% for merchant in all_merchants %}
+                <option value="{{merchant.id}}">{{merchant.name}}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder="Description" required autofocus>
+        </div>
+
+        <div>
+            <label for="tag"> Tag:</label>
+            <select name="tag_id" id="tag" required>
+             {% for tag in all_tags %}
+                 <option value="{{tag.id}}">{{tag.name}}</option>
+             {% endfor %}
+            </select>
+         </div>
+
+        <div>
+            <!-- DATE -->
+        </div>
+
+        <div>
+            <label for="price">Description:</label>
+            <input type="number" id="price" name="price" placeholder="total" required>
+        </div>
+        
+        <br>
+        <button type="submit">Add Transaction</button>
+
+    </form>
+</div>
+
 
 
 {% endblock content %}
