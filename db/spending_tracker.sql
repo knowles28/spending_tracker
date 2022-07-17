@@ -4,13 +4,13 @@ DROP TABLE IF EXISTS merchants;
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    tag_name VARCHAR(255)
 );
 
 
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    merchant_name VARCHAR(255)
 );
 
 CREATE TABLE transactions (
@@ -18,6 +18,5 @@ CREATE TABLE transactions (
     merchant_id INT NOT NULL REFERENCES merchants(id),
     description VARCHAR(255),
     tag_id INT NOT NULL REFERENCES tags(id),
-    _date DATE,
     price FLOAT
 );

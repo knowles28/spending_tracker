@@ -11,7 +11,7 @@
 <div class="list-block">
     <ul>
         {% for merchant in all_merchants %}
-                <li>Name: <b>{{ merchant.name }}</b> </li>
+                <li>Name: <b>{{ merchant.merchant_name }}</b> </li>
 
                 <div class="buttons">
                     <form class="update-button" action="/merchants/{{merchant.id}}/edit" method="post">
