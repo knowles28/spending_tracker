@@ -62,13 +62,14 @@ def delete(id):
 
 
 def transactions_total():
+    total = []
     
     sql = "SELECT SUM(price) FROM transactions"
-    results = run_sql(sql)
+    result = run_sql(sql)
     
+    total.append(float(result))
 
-    
-    return float(results)
+    return total
   
     
 print(transactions_total)
