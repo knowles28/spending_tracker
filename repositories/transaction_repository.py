@@ -61,19 +61,15 @@ def delete(id):
 
 
 
-def transactions_total():
-    total = []
+def total():
+    total = 0
+    all_transactions = select_all()
     
-    sql = "SELECT SUM(price) FROM transactions"
-    result = run_sql(sql)
+    for row in all_transactions:
+        total += row.price
     
-    total.append(float(result))
-
     return total
-  
-    
-print(transactions_total)
-    
+      
 
 
 
