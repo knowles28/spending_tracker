@@ -10,11 +10,58 @@ import repositories.merchant_repository as merchant_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
+#ALL
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
     return render_template("transactions/index.html", all_transactions=transactions)
 
-@transactions_blueprint.route("/transactions/new", methods=['POST'])
+#NEW
+@transactions_blueprint.route("/transactions/new", methods=['GET'])
 def new_transaction():
-    return render_template("/transactions/new.html")
+    merchants = merchant_repository.select_all()
+    tags = tag_repository.select_all()
+    return render_template("/transactions/new.html", all_merchants = merchants, all_tags = tags)
+
+#CREATE
+@transactions_blueprint.route("/transactions", methods=['POST'])
+def create_transaction():
+    merchant_id = request.form['merchant_id']
+    description = request.form['description']
+    tag_id      = request.form['tag_id']
+    price       = request.form['price']
+    
+    transaction = Transaction(merchant_id, description, tag_id, price)
+    transaction_repository.save(transaction)
+    
+    return redirect("/transactions")
+
+#EDIT '/transactions/<id>/edit'
+@transactions_blueprint.route("/transactions/<id>/edit", methods=['POST'])
+def edit_transaction(id):
+    transaction = transaction_repository.select(id)
+    merchants = merchant_repository.select_all()
+    tags = tag_repository.select_all()
+    
+    return render_template("/transactions/edit.html", transaction=transaction, all_merchants = merchants, all_tags = tags)
+
+
+#UPDATE '/transactions' [POST]
+@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
+def update_transaction(id):
+    merchant_id = request.form['merchant_id']
+    description = request.form['description']
+    tag_id      = request.form['tag_id']
+    price       = request.form['price']
+
+    transaction = Transaction(merchant_id, description, tag_id, price, id)
+    transaction_repository.update(transaction)    
+    return redirect("/transactions")
+
+
+#DELETE '/transactions/? [POST]
+@transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
+def delete_transaction(id):
+    transaction_repository.delete(id)
+    
+    return redirect('/transactions')

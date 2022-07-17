@@ -2,7 +2,54 @@
 
 {% block content %}
 
-<!-- INDIVIDUAL ITEM GOES HERE -->
+<div class="new-form">
+    <form action="/transactions/{{transaction.id}}" method="post">
+
+        <div>
+           <label for="merchant"> Merchant:</label>
+           <select name="merchant_id" id="merchant" required>
+            {% for merchant in all_merchants %}
+                <option value="{{merchant.id}}">
+                {{merchant.name}}
+                </option>
+            {% endfor %}
+            </select>
+
+        </div>
+
+
+        <div>
+            <label for="tag"> Tag:</label>
+            <select name="tag_id" id="tag" required>
+             {% for tag in all_tags %}
+                 <option value="{{tag.id}}">{{tag.name}}</option>
+             {% endfor %}
+            </select>
+         </div>
+
+
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder="Description" required autofocus>
+        </div>
+
+        <div>
+            <!-- DATE -->
+        </div>
+
+        <div>
+            <label for="price">Total (£):</label>
+            <input type="number" step="0.01" id="price" name="price" placeholder="enter price" required>
+        </div>
+        
+
+        
+        <br>
+        <button type="submit">Update Transaction</button>
+
+    </form>
+</div>
+
 
 
 {% endblock content %}

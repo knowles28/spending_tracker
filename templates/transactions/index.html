@@ -14,12 +14,12 @@
                 <li> <b>{{ transaction.merchant.name }}:</b> {{ transaction.description }} <i>'{{ transaction.tag.name }}'</i> | {{ transaction.date }} | <b>£{{ transaction.price }}</b> </li>
 
                 <div class="buttons">
-                    <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
+                    <form class="update-button" action="/transactions/{{ transaction.id }}/edit" method="post">
                         <button>Update</button>
                     </form>
 
                 <div class="buttons">
-                    <form class="delete-button" action="/transactions/{{transaction.id}}/delete" method="post">
+                    <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
                         <button>Delete</button>
                     </form>
                 </div>

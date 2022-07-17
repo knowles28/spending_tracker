@@ -16,6 +16,7 @@ def tags():
 # NEW '/tags/new'
 @tags_blueprint.route("/tags/new", methods=['GET'])
 def new_tag():
+    
     return render_template("tags/new.html")
 
 

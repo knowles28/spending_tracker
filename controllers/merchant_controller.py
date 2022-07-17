@@ -16,6 +16,7 @@ def merchants():
 # NEW '/merchants/new'
 @merchants_blueprint.route("/merchants/new", methods=['GET'])
 def new_merchant():
+    
     return render_template("merchants/new.html")
 
 
