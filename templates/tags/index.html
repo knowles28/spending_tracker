@@ -12,7 +12,10 @@
     <ul>
         {% for tag in all_tags %}
                 <li>Name: <b>{{ tag.name }}</b> </li>
-                <li>restricted: <b>{{ tag.restricted }}</b> </li>
+                <li>Restricted? <b> 
+                    {% if tag.restricted == True %} Yes {% endif %}
+                    {% if tag.restricted == False %} No {% endif %}
+                </b> </li>
 
                 <div class="buttons">
                     <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
