@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1>Edit Transaction</h1>
+
 <div class="new-form">
     <form action="/transactions/{{transaction.id}}" method="post">
 
@@ -9,7 +11,7 @@
            <label for="merchant"> Merchant:</label>
            <select name="merchant_id" id="merchant" required>
             {% for merchant in all_merchants %}
-                <option {% if transaction.merchant_id == merchant.id  %} selected {% endif %} value="{{merchant.id}}">
+                <option value="{{merchant.id}}" {% if transaction.merchant.id == merchant.id %} selected="selected" {% endif %}>
                 {{merchant.name}}
                 </option>
             {% endfor %}
@@ -22,7 +24,10 @@
             <label for="tag"> Tag:</label>
             <select name="tag_id" id="tag" required>
              {% for tag in all_tags %}
-                 <option value="{{tag.id}}">{{tag.name}}</option>
+                 <option value="{{tag.id}}" {% if transaction.tag.id == tag.id %} selected="selected" {% endif %}>
+
+                    {{tag.name}}
+                </option>
              {% endfor %}
             </select>
          </div>
@@ -35,7 +40,7 @@
 
         <div>
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
+            <input type="date" id="date" name="date" value="{{transaction.date}}" required>
         </div>
 
         <div>
@@ -46,7 +51,7 @@
 
         
         <br>
-        <button type="submit">Update Transaction</button>
+        <button type="submit">Update</button>
 
     </form>
 </div>

@@ -57,15 +57,13 @@ def update_transaction(id):
     price       = request.form['price']
     date        = request.form['date']
 
-
     transaction = Transaction(merchant_id, description, tag_id, price, date, id)
     transaction_repository.update(transaction)    
     return redirect("/transactions")
-
 
 #DELETE '/transactions/? [POST]
 @transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
 def delete_transaction(id):
     transaction_repository.delete(id)
     
-    return redirect('/transactions')
+    return redirect("/transactions")

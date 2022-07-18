@@ -19,7 +19,7 @@
     <ul>
         {% for transaction in all_transactions %}
                 <li class="list-item">
-                <b>{{ transaction.tag.name }} - {{ transaction.merchant.name }} : </b>  <i> '{{ transaction.description }}' </i> |  &nbsp; &nbsp; &nbsp; {{ transaction.date }} |  <b>£{{ transaction.price }}</b>
+                <b>{{ transaction.tag.name }} - {{ transaction.merchant.name }} : </b>  <i> '{{ transaction.description }}' </i>  &nbsp; &nbsp; &nbsp; {{ transaction.date }} &nbsp; <b>£{{ transaction.price }}</b>
                 <br>
                 
                 </li>
@@ -27,9 +27,9 @@
                 <div class="buttons">
                     <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
                         <button>Update</button>
-                        <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
-                            <button>Delete</button>
-                        </form>
+                    </form>
+                    <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
+                        <button>Delete</button>
                     </form>
 
                 <div class="buttons">
