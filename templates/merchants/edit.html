@@ -11,6 +11,18 @@
         <label for="merchant-name">Name: </label>
         <input type="text" id="name" name="merchant-name" value="{{merchant.name}}" required autofocus>
         <br>
+        <label for="restricted">Restrict Merchant?</label>
+        <select name="restricted" id="restricted">
+            <option value="True"
+                {% if merchant.restricted == True %} selected='selected' {% endif %} >
+                Yes
+            </option>
+            <option value="False"
+            {% if merchant.restricted == False %} selected='selected' {% endif %} >
+            No
+            </option>
+        </select>
+        <br>
         <button type="submit">Update</button>
     </form>
 </div>

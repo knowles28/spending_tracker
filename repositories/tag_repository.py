@@ -26,7 +26,7 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)
     
-    # note to self - if statement without condition checks variable is not empty
+    # reminder note to self - if statement without condition checks variable is not empty
     if results:
         result = results[0]
         tag = Tag(result['name'], result['restricted'], result['id'])
@@ -36,7 +36,7 @@ def select(id):
         
 
 def update(tag):
-    sql = "UPDATE tags SET name = %s WHERE id = %s"
+    sql = "UPDATE tags SET (name, restricted) = (%s, %s) WHERE id = %s"
     values = [tag.name, tag.restricted, tag.id]
     run_sql(sql, values)
 

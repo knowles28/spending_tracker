@@ -11,6 +11,18 @@
         <label for="tag-name">Name: </label>
         <input type="text" id="name" name="tag-name" value="{{tag.name}}" required autofocus>
         <br>
+        <label for="restricted"> Restrict tag?</label>
+        <select name="restricted" id="restricted">
+            <option value="True" {% if tag.restricted == True %} selected='selected' {% endif %} >
+                Yes
+            </option>
+            <option value="False" {% if tag.restricted == False %} selected='selected' {% endif %} >
+            No
+            </option>
+
+
+        </select>
+        <br>
         <button type="submit">Update</button>
 
     </form>

@@ -42,7 +42,8 @@ def edit_tag(id):
 @tags_blueprint.route("/tags/<id>", methods=['POST'])
 def update_tag(id):
     name = request.form['tag-name']
-    tag = Tag(name, id)
+    restricted = request.form ['restricted']
+    tag = Tag(name, restricted, id)
     
     tag_repository.update(tag)
     
