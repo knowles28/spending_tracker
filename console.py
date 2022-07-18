@@ -8,24 +8,24 @@ import repositories.transaction_repository as transaction_repository
 
 
 
-merchant1 = Merchant('Sainsburys')
+merchant1 = Merchant('Sainsburys', False)
 merchant_repository.save(merchant1)
 
-merchant2 = Merchant('LNER')
+merchant2 = Merchant('LNER', False)
 merchant_repository.save(merchant2)
 
-merchant3 = Merchant('The Chanter')
+merchant3 = Merchant('The Chanter', False)
 merchant_repository.save(merchant3)
 
 
 
-tag1 = Tag('Groceries')
+tag1 = Tag('Groceries', False)
 tag_repository.save(tag1)
 
-tag2 = Tag('Transport')
+tag2 = Tag('Transport', True)
 tag_repository.save(tag2)
 
-tag3 = Tag('Eating Out')
+tag3 = Tag('Eating Out', False)
 tag_repository.save(tag3)
 
 transaction1 = Transaction('1', 'Weekly shop', '1', 60.00, '2022-07-14')

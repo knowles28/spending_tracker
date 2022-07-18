@@ -1,4 +1,5 @@
 class Tag:
-    def __init__(self, name, id=None):
+    def __init__(self, name, restricted=False, id=None):
         self.name = name
+        self.restricted = restricted
         self.id = id

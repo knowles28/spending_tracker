@@ -46,7 +46,7 @@ a:hover {
     padding-right: 40px;
 }
 
-.transactions-bar {
+.info-bar {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
@@ -58,9 +58,15 @@ a:hover {
 }
 
 
+
+
 .new-form {
     margin: 30px;
     align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
 }
 
 .list-block {

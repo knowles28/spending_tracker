@@ -2,17 +2,22 @@
 
 {% block content %}
 
-<h1 class="page-title">Dashboard</h1>
+<h1 class="page-title">My Dashboard</h1>
 
-<div class="transactions-bar">
+<div class="info-bar">
 
     <div class="new-button">
         <button><a href="/transactions/new">Add New</a></button>
     </div>
 
-    <div class="total-transactions">
-        TOTAL: £{{ total }}
+    <div class="total-target">
+        Target: <b>£000.00</b>
     </div>
+
+    <div class="total-transactions">
+        Total: <b>£{{ total }}</b>
+    </div>
+
 
 </div>
 
@@ -30,11 +35,11 @@
                     {{ transaction.merchant.name }} - {{ transaction.description }}
                 </li>
 
-                <li class="list-item div5" id="list-date">
+                <li class="list-item div4" id="list-date">
                     {{ transaction.date }}
                 </li>
                 
-                <li class="list-item div6" id="list-price">
+                <li class="list-item div5" id="list-price">
                     <b>£{{ transaction.price }}</b>
                 </li>
 
@@ -44,7 +49,7 @@
                     </form>
                 </div>
 
-                <div class="buttons div4">
+                <div class="buttons div6">
                     <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
                         <button>Delete</button>
                     </form>
