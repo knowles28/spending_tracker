@@ -2,41 +2,54 @@
 
 {% block content %}
 
-<h1>Dashboard</h1>
+<h1 class="page-title">Dashboard</h1>
 
-<div class="total-transactions">
-    TOTAL: £{{ total }}
+<div class="transactions-bar">
+
+    <div class="new-button">
+        <button><a href="/transactions/new">Add New</a></button>
+    </div>
+
+    <div class="total-transactions">
+        TOTAL: £{{ total }}
+    </div>
+
 </div>
 
-<br>
 
-<div class="new-button">
-    <button><a href="/transactions/new">Add New</a></button>
-</div>
-
-
-<div class="list-block">
+<div>
     <ul>
         {% for transaction in all_transactions %}
-                <li class="list-item">
-                <b>{{ transaction.tag.name }} - {{ transaction.merchant.name }} : </b>  <i> '{{ transaction.description }}' </i>  &nbsp; &nbsp; &nbsp; {{ transaction.date }} &nbsp; <b>£{{ transaction.price }}</b>
+            <div class="list-block">   
+                <li class="list-item div1" id="list-merchant-tag">
+                <b>{{ transaction.tag.name }} </b>
                 <br>
-                
                 </li>
 
-                <div class="buttons">
+                <li class="list-item div2">
+                    {{ transaction.merchant.name }} - {{ transaction.description }}
+                </li>
+
+                <li class="list-item div5" id="list-date">
+                    {{ transaction.date }}
+                </li>
+                
+                <li class="list-item div6" id="list-price">
+                    <b>£{{ transaction.price }}</b>
+                </li>
+
+                <div class="buttons div3">
                     <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
                         <button>Update</button>
                     </form>
+                </div>
+
+                <div class="buttons div4">
                     <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
                         <button>Delete</button>
                     </form>
-
-                <div class="buttons">
-
-                    <br>
-
                 </div>
+            </div>
         {% endfor %}
         
     </ul>
