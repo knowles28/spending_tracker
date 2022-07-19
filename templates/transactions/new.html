@@ -11,7 +11,7 @@
            <label for="merchant"> Merchant:</label>
            <select name="merchant_id" id="merchant" required>
             {% for merchant in all_merchants %}
-                <option value="{{merchant.id}}">{{merchant.name}}</option>
+                <option value="{{merchant.id}}" {% if merchant.restricted == True %} disabled {% endif %}>{{merchant.name}}</option>
             {% endfor %}
             </select>
         </div>
@@ -21,7 +21,7 @@
             <label for="tag"> Tag:</label>
             <select name="tag_id" id="tag" required>
              {% for tag in all_tags %}
-                 <option value="{{tag.id}}">{{tag.name}}</option>
+                 <option value="{{tag.id}}" {% if tag.restricted == True %} disabled {% endif %}>{{tag.name}}</option>
              {% endfor %}
             </select>
          </div>
