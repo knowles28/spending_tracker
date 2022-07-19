@@ -1,14 +1,13 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS merchants;
-DROP TABLE IF EXISTS targets
+DROP TABLE IF EXISTS budgets;
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     restricted BOOLEAN 
 );
-
 
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,

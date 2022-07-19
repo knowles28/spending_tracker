@@ -1,9 +1,9 @@
-from crypt import methods
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
 from models.merchant import Merchant
 from models.tag import Tag
+from models.budget import Budget
 
 import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
@@ -17,7 +17,7 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total()
-    target = budget_repository.save()
+    target = budget_repository.select()
     return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target)
 
 #NEW
@@ -82,5 +82,6 @@ def edit_target():
 @transactions_blueprint.route("/transactions/update-target", methods=['POST'])
 def update_target():
     updated_target = request.form['target']
-    budget_repository.save(updated_target)
+    new_budget = Budget(updated_target)
+    budget_repository.save(new_budget)
     return redirect("/transactions")
