@@ -4,71 +4,95 @@
 
 <h1 class="page-title">My Dashboard</h1>
 
-<div class="info-bar">
+<div class="info-elements">
 
-    <div class="total-target">
-        Target: <b>£{{target_budget.amount}}</b>
+    <div class="target-bar ie-1">
+
+        <div class="total-target">
+            Target: <br> <b>£{{target_budget.amount}}</b>
+        </div>
+
+        <div>
+            <button><a href="/transactions/edit-target">Update</a></button>
+        </div>
+
     </div>
 
-    <div class="total-transactions">
-        Total: <b>£{{ total }}</b>
-    </div>
+    <div class="total-bar ie-2">
 
+        <div class="total-transactions">
+            Total: <br> <b>£{{ total }}</b>
+        </div>
+
+    </div>
 
 </div>
 
-<div class="info-bar">
 
-    <div class="new-button">
-        <button><a href="/transactions/new">Add New</a></button>
+<div class="search-bar">
+
+    <div class="button-1">
+        <button><a href="/transactions/new">New Transaction</a></button>
     </div>
 
-    <div class="new-button">
+    <div class="button-2">
         <button><a href="">Search</a></button>
     </div>
 
-    <div class="new-button">
-        <button><a href="">Filter</a></button>
-    </div>
+    <div>
+        <label for="tags-filter"> Tags:</label>
+        <select name="tags-filter" id="tag-filter" required>
+            <option value="all">All</option>
+         {% for tag in all_tags %}
+             <option value="{{tag.id}}">
+             {{tag.name}}
+             </option>
+         {% endfor %}
+         </select>
 
-    <div class="new-button">
-        <button><a href="">Sort</a></button>
-    </div>
+     </div>
 
-    <div class="new-button">
-        <button><a href="/transactions/edit-target">Update Target</a></button>
-    </div>
+     <div>
+        <label for="sort by"> Sort:</label>
+        <select name="sort-by" id="sort-by" required>
+            <option value="/">Price: Lowest</option>
+            <option value="/">Price: Highest</option>
+            <option value="/">Date: Newest</option>
+            <option value="/">Date: Oldest</option>
+         </select>
+
+     </div>
+ 
 
 </div>
 
 
 
-<table style="width:70%">
+<table class="transaction-table" style="width:100%">
         <thead>
-            <tr>
+            <!-- <tr>
+                <th>Icon </th>
                 <th>Transaction</th>
                 <th>Date</th>
                 <th>Amount</th>
                 <th>Buttons</th>
-            </tr>
+            </tr> -->
         </thead>
     
         {% for transaction in all_transactions %}
             <tr>
-                <td>{{ transaction.tag.name }} <br> {{ transaction.merchant.name }} - {{ transaction.description }} </td>
+                <td> Icon </td>
+                <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} </td>
                 <td>{{ transaction.date }}</td>
-                <td> {{ transaction.price }}</td>
-                <td>
-                    <div class="buttons div3">
+                <td> <b>£{{ transaction.price }}</b></td>
+                <td class="table=buttons">
+                    <div class="buttons">
                         <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
-                            <button>Update</button>
+                            <button>Edit</button>
                         </form>
-                    </div>
-
-                    <div class="buttons div6">
                         <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
                             <button><i class="fa fa-trash-o fa-2x"></i></button>
-
+                    </div>
                 </td>
             </tr>
         {% endfor %}

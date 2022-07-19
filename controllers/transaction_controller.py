@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from controllers.tag_controller import tags
 from models.transaction import Transaction
 from models.merchant import Merchant
 from models.tag import Tag
@@ -18,7 +19,33 @@ def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total()
     target = budget_repository.select()
-    return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target)
+    tags = tag_repository.select_all()
+    # tag_filter = request.args.get('tags', default='all')
+    # sort_filter = request.args.get('sort', default='date-newest')
+    return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target, all_tags=tags)
+
+
+# APPLY FILTERS
+# REQUEST - tags
+# REQUEST - SORT
+
+#
+# match form data
+# form tags 
+# apply Button
+# match form action to route
+# write filtered_select with
+
+
+@transactions_blueprint.route("/transactions/filters", methods=['POST'])
+def filters():
+    tags = request.form['tags']
+    sortby = request.form['sort']
+    
+    redirect (f"/transactions?tags={tags}&sort={sortby}")
+    
+    # redirect formatted tags=all&sort=date-newest
+
 
 #NEW
 @transactions_blueprint.route("/transactions/new", methods=['GET'])

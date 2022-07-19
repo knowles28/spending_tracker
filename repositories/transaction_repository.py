@@ -31,6 +31,9 @@ def select_all():
     
     return transactions
 
+def filtered_selected(sort, filter):
+    pass
+
 def select(id):
     transaction = None
     sql = "SELECT * FROM transactions WHERE id = %s"
