@@ -8,6 +8,7 @@ from models.tag import Tag
 import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
+import repositories.budget_repository as budget_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
@@ -16,7 +17,8 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total()
-    return render_template("transactions/index.html", all_transactions=transactions, total=total)
+    target = budget_repository.save()
+    return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target)
 
 #NEW
 @transactions_blueprint.route("/transactions/new", methods=['GET'])
@@ -69,10 +71,16 @@ def delete_transaction(id):
     
     return redirect("/transactions")
 
+
+# EXTENSIONS ___________________________________________________
+
+
 @transactions_blueprint.route("/transactions/edit-target", methods=['GET'])
 def edit_target():
     return render_template("/transactions/target.html")
 
 @transactions_blueprint.route("/transactions/update-target", methods=['POST'])
 def update_target():
-    updated_target = request.form['']
+    updated_target = request.form['target']
+    budget_repository.save(updated_target)
+    return redirect("/transactions")

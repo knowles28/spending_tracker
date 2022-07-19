@@ -6,6 +6,19 @@
 
 <div class="info-bar">
 
+    <div class="total-target">
+        Target: <b>{{target_budget}}</b>
+    </div>
+
+    <div class="total-transactions">
+        Total: <b>£{{ total }}</b>
+    </div>
+
+
+</div>
+
+<div>
+
     <div class="new-button">
         <button><a href="/transactions/new">Add New</a></button>
     </div>
@@ -25,16 +38,6 @@
     <div class="new-button">
         <button><a href="/transactions/edit-target">Update Target</a></button>
     </div>
-
-    <div class="total-target">
-        Target: <b>£000.00</b>
-    </div>
-
-    <div class="total-transactions">
-        Total: <b>£{{ total }}</b>
-    </div>
-
-
 </div>
 
 
@@ -67,7 +70,7 @@
 
                 <div class="buttons div6">
                     <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
-                        <button><i class="fa fa-trash-o fa-3x"></i></button>
+                        <button><i class="fa fa-trash-o fa-2x"></i></button>
                     </form>
                 </div>
             </div>

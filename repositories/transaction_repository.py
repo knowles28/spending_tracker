@@ -47,16 +47,12 @@ def select(id):
     return transaction
 
         
-
 def update(transaction):
     
     sql = "UPDATE transactions SET (merchant_id, description, tag_id, price, date) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [transaction.merchant, transaction.description, transaction.tag, transaction.price, transaction.date, transaction.id]
     run_sql(sql, values)
     
-def update_target():
-    pass
-
 
 def delete(id):
     sql = "DELETE FROM transactions WHERE id = %s"
@@ -73,7 +69,19 @@ def total():
         total += row.price
     
     return total
-      
+
+
+# EXTENSIONS __________________________________________
+
+def update_budget(updated_target):
+    target = updated_target
+    return target
+
+def target_budget():
+    target = []
+    return target
+
+
 
 
 

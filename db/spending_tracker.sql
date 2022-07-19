@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS merchants;
+DROP TABLE IF EXISTS targets
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
@@ -22,4 +23,9 @@ CREATE TABLE transactions (
     tag_id INT NOT NULL REFERENCES tags(id),
     price FLOAT,
     date DATE
+);
+
+CREATE TABLE budgets (
+    id SERIAL PRIMARY KEY,
+    amount FLOAT
 );
