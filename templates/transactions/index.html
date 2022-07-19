@@ -17,7 +17,7 @@
 
 </div>
 
-<div>
+<div class="info-bar">
 
     <div class="new-button">
         <button><a href="/transactions/new">Add New</a></button>
@@ -38,12 +38,51 @@
     <div class="new-button">
         <button><a href="/transactions/edit-target">Update Target</a></button>
     </div>
+
 </div>
 
 
+
+<table style="width:70%">
+        <thead>
+            <tr>
+                <th>Transaction</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Buttons</th>
+            </tr>
+        </thead>
+    
+        {% for transaction in all_transactions %}
+            <tr>
+                <td>{{ transaction.tag.name }} <br> {{ transaction.merchant.name }} - {{ transaction.description }} </td>
+                <td>{{ transaction.date }}</td>
+                <td> {{ transaction.price }}</td>
+                <td>
+                    <div class="buttons div3">
+                        <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
+                            <button>Update</button>
+                        </form>
+                    </div>
+
+                    <div class="buttons div6">
+                        <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
+                            <button><i class="fa fa-trash-o fa-2x"></i></button>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tr>
+</table>
+
+</div>
+
+<!-- 
 <div>
     <ul>
         {% for transaction in all_transactions %}
+
+        
             <div class="list-block">   
                 <li class="list-item div1" id="list-merchant-tag">
                 <b>{{ transaction.tag.name }} </b>
@@ -74,10 +113,11 @@
                     </form>
                 </div>
             </div>
+            
         {% endfor %}
         
     </ul>
-</div>
+</div> -->
 
     
 {% endblock content %}

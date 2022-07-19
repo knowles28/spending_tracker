@@ -21,6 +21,18 @@ merchant_repository.save(merchant2)
 merchant3 = Merchant('The Chanter', False)
 merchant_repository.save(merchant3)
 
+merchant4 = Merchant('ScotRail', False)
+merchant_repository.save(merchant4)
+
+merchant5 = Merchant('Lothian Buses', False)
+merchant_repository.save(merchant5)
+
+merchant6 = Merchant('Wings', False)
+merchant_repository.save(merchant6)
+
+merchant7 = Merchant('Aldi', False)
+merchant_repository.save(merchant7)
+
 
 
 tag1 = Tag('Groceries', False)
@@ -32,12 +44,25 @@ tag_repository.save(tag2)
 tag3 = Tag('Eating Out', False)
 tag_repository.save(tag3)
 
-transaction1 = Transaction('1', 'Weekly shop', '1', 60.00, '2022-07-14')
+transaction1 = Transaction('1', 'quick shop', '1', 18.78, '2022-06-28')
 transaction_repository.save(transaction1)
-transaction2 = Transaction('2', 'Train tickets', '2', 20.00, '2022-07-05')
+transaction2 = Transaction('2', 'London tickets', '2', 40.00, '2022-06-05')
 transaction_repository.save(transaction2)
-transaction3 = Transaction('3', 'pint', '3', 3.5, '2022-07-02')
+transaction3 = Transaction('3', 'pint', '3', 3.5, '2022-07-01')
 transaction_repository.save(transaction3)
+
+transaction4 = Transaction('4', 'Glasgow train', '2', 20.00, '2022-07-14')
+transaction_repository.save(transaction1)
+transaction5 = Transaction('5', 'Bus rides', '2', 4.50, '2022-04-15')
+transaction_repository.save(transaction2)
+transaction6 = Transaction('6', 'spicy dinner', '3', 10.25, '2022-05-30')
+transaction_repository.save(transaction3)
+transaction7 = Transaction('7', 'Weekly shop', '1', 52.00, '2022-07-10')
+transaction_repository.save(transaction2)
+transaction8 = Transaction('3', 'happy hour drinks', '3', 14.00, '2022-06-02')
+transaction_repository.save(transaction3)
+
+
 
 budget1 = Budget(100.00)
 budget_repository.save(budget1)
