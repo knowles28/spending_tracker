@@ -50,6 +50,19 @@ def update_merchant(id):
     
     return redirect("/merchants")
 
+@merchants_blueprint.route("/merchants/<id>/update-restricted", methods=['POST'])
+def restrict_tag(id):
+    merchant = merchant_repository.select(id)
+    
+    if merchant.restricted == True:
+        merchant.mark_unrestricted()
+    else:
+        merchant.mark_restricted()
+    
+    merchant_repository.update(merchant)
+    
+    return redirect("/merchants")
+
 
 #DELETE '/merchants/edit'? [POST]
 @merchants_blueprint.route("/merchants/<id>/delete", methods=['POST'])

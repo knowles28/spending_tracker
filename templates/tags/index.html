@@ -18,15 +18,28 @@
                 </b> </li>
 
                 <div class="buttons">
-                    <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
-                        <button>Update</button>
+                    <form class="restrict-button" action="/tags/{{tag.id}}/update-restricted" method="post">
+                        <button>
+                        {% if tag.restricted == False %}
+                            <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="fa fa-times fa-2x" style="color:rgb(221, 3, 3)" aria-hidden="true"></i>
+                        {% endif %}
+                        </button>
                     </form>
+
+                    
+                <div class="buttons">
+                        <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
+                            <button>Update</button>
+                        </form>
 
                 <div class="buttons">
                     <form class="delete-button" action="/tags/{{tag.id}}/delete" method="post">
-                        <button>Delete</button>
+                        <button class="delete-button"><i class="fa fa-trash-o fa-3x"></i></button>
                     </form>
                 </div>
+                <hr>
         {% endfor %}
     </ul>
 </div>

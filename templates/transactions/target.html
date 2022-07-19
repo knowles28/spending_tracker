@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="page-title">Set Target Amount</h1>
+
+<div class="new-form">
+    <form action="/transactions/update-target" method="post">
+
+        <div>
+            <label for="target"> Target (£):</label>
+            <input type="number" name="target" required autofocus>
+
+        </div>
+
+        <div>
+            DATE FILTER?
+        </div>
+
+        <button type="submit">Update</button>
+
+
+{% endblock content %}

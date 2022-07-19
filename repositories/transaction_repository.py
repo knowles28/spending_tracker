@@ -53,6 +53,9 @@ def update(transaction):
     sql = "UPDATE transactions SET (merchant_id, description, tag_id, price, date) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [transaction.merchant, transaction.description, transaction.tag, transaction.price, transaction.date, transaction.id]
     run_sql(sql, values)
+    
+def update_target():
+    pass
 
 
 def delete(id):

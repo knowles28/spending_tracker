@@ -19,13 +19,24 @@
                 </b> </li>
 
                 <div class="buttons">
+                    <form class="restrict-button" action="/merchants/{{merchant.id}}/update-restricted" method="post">
+                        <button>
+                        {% if merchant.restricted == False %}
+                            <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="fa fa-times fa-2x" style="color:rgb(221, 3, 3)" aria-hidden="true"></i>
+                        {% endif %}
+                        </button>
+                    </form>
+
+                <div class="buttons">
                     <form class="update-button" action="/merchants/{{merchant.id}}/edit" method="post">
                         <button>Update</button>
                     </form>
 
                 <div class="buttons">
                     <form class="delete-button" action="/merchants/{{merchant.id}}/delete" method="post">
-                        <button>Delete</button>
+                        <button><i class="fa fa-trash-o fa-3x"></i></button>
                     </form>
                 </div>
         {% endfor %}

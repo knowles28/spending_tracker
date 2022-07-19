@@ -50,6 +50,20 @@ def update_tag(id):
     return redirect("/tags")
 
 
+@tags_blueprint.route("/tags/<id>/update-restricted", methods=['POST'])
+def restrict_tag(id):
+    tag = tag_repository.select(id)
+    
+    if tag.restricted == True:
+        tag.mark_unrestricted()
+    else:
+        tag.mark_restricted()
+    
+    tag_repository.update(tag)
+    
+    return redirect("/tags")
+
+
 #DELETE '/tags/edit'? [POST]
 @tags_blueprint.route("/tags/<id>/delete", methods=['POST'])
 def delete_tag(id):

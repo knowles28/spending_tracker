@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -67,3 +68,11 @@ def delete_transaction(id):
     transaction_repository.delete(id)
     
     return redirect("/transactions")
+
+@transactions_blueprint.route("/transactions/edit-target", methods=['GET'])
+def edit_target():
+    return render_template("/transactions/target.html")
+
+@transactions_blueprint.route("/transactions/update-target", methods=['POST'])
+def update_target():
+    updated_target = request.form['']
