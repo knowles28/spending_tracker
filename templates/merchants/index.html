@@ -4,9 +4,70 @@
 
 <h1 class="page-title">Merchants</h1>
 
-<div class="new-button info-bar">
+<div class="button-1 info-bar">
     <button><a href="/merchants/new">Add New</a></button>
 </div>
+
+
+<table class="transaction-table" style="width:100%">
+    <thead>
+        <!-- <tr>
+            <th>Icon </th>
+            <th>Transaction</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Buttons</th>
+        </tr> -->
+    </thead>
+
+    {% for merchant in all_merchants %}        
+        <tr>
+            <td> 
+                {{ merchant.name }}
+            </td>
+
+            <td>
+                Restricted? <b> 
+                    {% if merchant.restricted == True %} Yes {% endif %}
+                    {% if merchant.restricted == False %} No {% endif %}
+                </b>
+            </td>
+
+            <td>
+                <form class="restrict-button" action="/merchants/{{merchant.id}}/update-restricted" method="post">
+                    <button>
+                    {% if merchant.restricted == False %}
+                        <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa fa-times fa-2x" style="color:rgb(221, 3, 3)" aria-hidden="true"></i>
+                    {% endif %}
+                    </button>
+                </form>
+            </td>
+
+
+            <td >
+                <form class="update-button" action="/merchants/{{merchant.id}}/edit" method="post">
+                    <button><i class="fa-solid fa-pen-to-square"></i></button>
+                </form>
+        
+            </td>
+            <td>
+                <form class="delete-button" action="/merchants/{{merchant.id}}/delete" method="post">
+                    <button><i class="fa fa-trash-o"></i></button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tr>
+</table>
+
+    
+{% endblock content %}
+
+<!-- 
+
+
 
 <div class="list-block">
     <ul>
@@ -42,7 +103,4 @@
         {% endfor %}
         
     </ul>
-</div>
-
-    
-{% endblock content %}
+</div> -->

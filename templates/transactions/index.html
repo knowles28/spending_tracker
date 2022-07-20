@@ -8,7 +8,7 @@
 
     <div class="target-bar ie-1">
 
-        <div class="total-target">
+        <div >
             Target: <br> <b>£{{target_budget.amount}}</b>
         </div>
 
@@ -16,11 +16,11 @@
             <button><a href="/transactions/edit-target">Update</a></button>
         </div>
 
-        <div>
+        <div class="target-icon">
             {% if target_budget.amount > total %}
-                ✅
+            <i class="fa-regular fa-circle-check fa-2x"></i>
             {% else %}
-                ❌
+            <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
             {% endif %}
 
         </div>
@@ -59,8 +59,7 @@
                 <select name="tags-filter" id="tag-filter" required>
                     <option value="all" {% if tag_filter == "all" %} selected="selected" {% endif %}>All</option>
                 {% for tag in all_tags %}
-                    <option value="{{tag.id}}" {% if tag_filter == "{{tag.id}}" %} selected="selected" {% endif %}>
-                        <!-- TAG VALUE??? FOLLOW TO FORM -->
+                    <option tag_filter="{{tag_filter == tag.id}}" value="{{tag.id}}" {% if tag_filter == tag.id %} selected="selected" {% endif %}>
                     {{tag.name}}
                     </option>
                 {% endfor %}
@@ -104,7 +103,7 @@
     
         {% for transaction in all_transactions %}
             <tr>
-                <td> Icon </td>
+                <td> {{transaction.tag.icon}} </td>
                 <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} <br> </td>
                 <td>{{ transaction.date }}</td>
                 <td> <b>£{{ transaction.price }}</b></td>
@@ -125,6 +124,8 @@
 
 </div>
 
+    
+{% endblock content %}
 <!-- 
 <div>
     <ul>
@@ -166,6 +167,3 @@
         
     </ul>
 </div> -->
-
-    
-{% endblock content %}

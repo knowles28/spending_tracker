@@ -16,7 +16,6 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     tag_filter = request.args.get('tags', default='all')
-    # breakpoint()
     sort_by_filter = request.args.get('sort-by', default='newest')
     transactions = transaction_repository.select_all(tag_filter, sort_by_filter)
     total = transaction_repository.total()

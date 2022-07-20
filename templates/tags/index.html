@@ -4,20 +4,30 @@
 
 <h1 class="page-title"> My Tags</h1>
 
-<div class="new-button info-bar">
+<div class="button-1 info-bar">
     <button><a href="/tags/new">Add New</a></button>
 </div>
 
-<div class="list-block">
-    <ul>
-        {% for tag in all_tags %}
-                <li>Name: <b>{{ tag.name }}</b> </li>
-                <li>Restricted? <b> 
-                    {% if tag.restricted == True %} Yes {% endif %}
-                    {% if tag.restricted == False %} No {% endif %}
-                </b> </li>
 
-                <div class="buttons">
+
+<table class="transaction-table">
+    
+        {% for tag in all_tags %}
+            <tr>
+                <td>
+                    ICON
+                </td>
+                <td> 
+                    Name: <b>{{ tag.name }}</b> 
+                </td>
+                
+                <td>
+                    Restricted? <b> 
+                        {% if tag.restricted == True %} Yes {% endif %}
+                        {% if tag.restricted == False %} No {% endif %}
+                </td>
+
+                <td>  
                     <form class="restrict-button" action="/tags/{{tag.id}}/update-restricted" method="post">
                         <button>
                         {% if tag.restricted == False %}
@@ -27,22 +37,57 @@
                         {% endif %}
                         </button>
                     </form>
+                </td>
 
-                    
-                <div class="buttons">
-                        <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
-                            <button>Update</button>
-                        </form>
-
-                <div class="buttons">
-                    <form class="delete-button" action="/tags/{{tag.id}}/delete" method="post">
-                        <button class="delete-button"><i class="fa fa-trash-o fa-3x"></i></button>
+                <td>
+                    <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
+                        <button><i class="fa-solid fa-pen-to-square"></i></button>
                     </form>
-                </div>
-                <hr>
+                </td>
+                
+                <td>
+                    <form class="delete-button" action="/tags/{{tag.id}}/delete" method="post">
+                        <button class="delete-button"><i class="fa fa-trash-o fa-1x"></i></button>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
-</div>
+</table>
 
-    
 {% endblock content %}
+
+<!-- 
+
+<ul>
+    {% for tag in all_tags %}
+            <li><b>{{ tag.name }}</b> </li>
+            <li>Restricted? <b> 
+                {% if tag.restricted == True %} Yes {% endif %}
+                {% if tag.restricted == False %} No {% endif %}
+            </b> </li>
+
+            <div class="buttons">
+                <form class="restrict-button" action="/tags/{{tag.id}}/update-restricted" method="post">
+                    <button>
+                    {% if tag.restricted == False %}
+                        <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa fa-times fa-2x" style="color:rgb(221, 3, 3)" aria-hidden="true"></i>
+                    {% endif %}
+                    </button>
+                </form>
+
+                
+            <div class="buttons">
+                    <form class="update-button" action="/tags/{{tag.id}}/edit" method="post">
+                        <button>Update</button>
+                    </form>
+
+            <div class="buttons">
+                <form class="delete-button" action="/tags/{{tag.id}}/delete" method="post">
+                    <button class="delete-button"><i class="fa fa-trash-o fa-3x"></i></button>
+                </form>
+            </div>
+            <hr>
+    {% endfor %}
+</ul>
+</div> -->

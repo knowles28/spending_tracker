@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS budgets;
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    restricted BOOLEAN 
+    restricted BOOLEAN
 );
 
 CREATE TABLE merchants (

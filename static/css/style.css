@@ -113,6 +113,10 @@ a:hover {
 
 }
 
+.target-icon    {
+    size: 200%;
+}
+
 
 .search-bar {
     background-color: white;
@@ -145,17 +149,12 @@ tr:hover {
 }
 
 td {
-    padding: 10px;
+    padding: 15px;
 }
 
 
 .table-buttons {
     width: 20px;
-}
-
-
-.total-target {
-    font-size: 1.2em;
 }
 
 
