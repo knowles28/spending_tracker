@@ -1,3 +1,4 @@
+from email.policy import default
 from db.run_sql import run_sql
 
 from models.transaction import Transaction
@@ -20,15 +21,36 @@ def save(transaction):
 
 def select_all(tag_filter='all', sort_by_filter=None):
     transactions = []
+    sort_lookup = {
+        'lowest': 'price ASC',
+        'highest': 'price DESC',
+        'oldest': 'date ASC',
+        'newest': 'date DESC'
+    }
+    sort_sql = sort_lookup.get(sort_by_filter, 'date DESC') 
+
     
     if tag_filter == 'all':
-        sql = "SELECT * FROM transactions"
+
+        sql = f"SELECT * FROM transactions ORDER BY {sort_sql}"
         results = run_sql(sql)
 
     else:
         sql = "SELECT * FROM transactions WHERE tag_id = %s"
         values = [tag_filter]
+        sql  = sql + f' ORDER BY {sort_sql}'
+        
         results = run_sql(sql, values)
+
+    
+                #    <option value="lowest">Price: Lowest</option>
+                    # <option value="highest">Price: Highest</option>
+                    # <option value="newest">Date: Newest</option>
+                    # <option value="oldest">Date: Oldest</option>
+
+
+
+
 
     
     

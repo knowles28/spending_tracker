@@ -52,15 +52,15 @@ transaction3 = Transaction('3', 'pint', '3', 3.5, '2022-07-01')
 transaction_repository.save(transaction3)
 
 transaction4 = Transaction('4', 'Glasgow train', '2', 20.00, '2022-07-14')
-transaction_repository.save(transaction1)
+transaction_repository.save(transaction4)
 transaction5 = Transaction('5', 'Bus rides', '2', 4.50, '2022-04-15')
-transaction_repository.save(transaction2)
+transaction_repository.save(transaction5)
 transaction6 = Transaction('6', 'spicy dinner', '3', 10.25, '2022-05-30')
-transaction_repository.save(transaction3)
+transaction_repository.save(transaction6)
 transaction7 = Transaction('7', 'Weekly shop', '1', 52.00, '2022-07-10')
-transaction_repository.save(transaction2)
+transaction_repository.save(transaction7)
 transaction8 = Transaction('3', 'happy hour drinks', '3', 14.00, '2022-06-02')
-transaction_repository.save(transaction3)
+transaction_repository.save(transaction8)
 
 
 
