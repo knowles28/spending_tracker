@@ -16,36 +16,24 @@ transactions_blueprint = Blueprint("transactions", __name__)
 #ALL
 @transactions_blueprint.route("/transactions")
 def transactions():
-    transactions = transaction_repository.select_all()
+    tag_filter = request.args.get('tags', default='all')
+    sort_by_filter = request.args.get('sort-by', default='newest')
+    transactions = transaction_repository.select_all(tag_filter, sort_by_filter)
     total = transaction_repository.total()
     target = budget_repository.select()
     tags = tag_repository.select_all()
-    # tag_filter = request.args.get('tags', default='all')
-    # sort_filter = request.args.get('sort', default='date-newest')
+
     return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target, all_tags=tags)
 
 
-# APPLY FILTERS
-# REQUEST - tags
-# REQUEST - SORT
-
-#
-# match form data
-# form tags 
-# apply Button
-# match form action to route
-# write filtered_select with
-
-
-@transactions_blueprint.route("/transactions/filters", methods=['POST'])
+#EXTENSION - FILTERS W/ URL PARAMETERS
+@transactions_blueprint.route("/transactions/filter", methods=['POST'])
 def filters():
-    tags = request.form['tags']
-    sortby = request.form['sort']
+    tags = request.form['tags-filter']
+    sortby = request.form['sort-by-filter']
     
-    redirect (f"/transactions?tags={tags}&sort={sortby}")
+    return redirect(f"/transactions?tags={tags}&sort-by={sortby}")
     
-    # redirect formatted tags=all&sort=date-newest
-
 
 #NEW
 @transactions_blueprint.route("/transactions/new", methods=['GET'])

@@ -18,10 +18,20 @@ def save(transaction):
     return transaction
 
 
-def select_all():
+def select_all(tag_filter='all', sort_by_filter=None):
     transactions = []
-    sql = "SELECT * FROM transactions"
-    results = run_sql(sql)
+    
+    if tag_filter == 'all':
+        sql = "SELECT * FROM transactions"
+        results = run_sql(sql)
+
+    else:
+        sql = "SELECT * FROM transactions WHERE tag_id = %s"
+        values = [tag_filter]
+        results = run_sql(sql, values)
+
+    
+    
     
     for row in results:
         merchant = merchant_repository.select(row['merchant_id'])
@@ -30,6 +40,20 @@ def select_all():
         transactions.append(transaction)
     
     return transactions
+
+# def select_all():
+#     transactions = []
+#     sql = "SELECT * FROM transactions"
+#     results = run_sql(sql)
+    
+#     for row in results:
+#         merchant = merchant_repository.select(row['merchant_id'])
+#         tag = tag_repository.select(row['tag_id'])
+#         transaction = Transaction(merchant, row['description'], tag, row['price'], row['date'], row['id'])
+#         transactions.append(transaction)
+    
+#     return transactions
+
 
 def filtered_selected(sort, filter):
     pass

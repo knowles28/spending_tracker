@@ -76,9 +76,9 @@ a:hover {
     color: coral;
 }
 
-#main-content {
-    padding-left: 40px;
-    padding-right: 40px;
+.main-content {
+    padding: 20px 40px;
+
 }
 
 

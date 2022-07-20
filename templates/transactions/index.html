@@ -21,7 +21,7 @@
     <div class="total-bar ie-2">
 
         <div class="total-transactions">
-            Total: <br> <b>£{{ total }}</b>
+            Total Spent: <br> <b>£{{ total }}</b>
         </div>
 
     </div>
@@ -35,33 +35,46 @@
         <button><a href="/transactions/new">New Transaction</a></button>
     </div>
 
-    <div class="button-2">
-        <button><a href="">Search</a></button>
+    <div>
+        <form action="transactions/search"></form>
+        <input type="text">
+        <button class="button-2" placeholder="Enter transaction, merchant, tag" name="search-bar"><a href="">Search</a></button>
     </div>
 
     <div>
-        <label for="tags-filter"> Tags:</label>
-        <select name="tags-filter" id="tag-filter" required>
-            <option value="all">All</option>
-         {% for tag in all_tags %}
-             <option value="{{tag.id}}">
-             {{tag.name}}
-             </option>
-         {% endfor %}
-         </select>
+
+        <form action="/transactions/filter" method="post">
+
+            <div>
+                <label for="tags-filter"> Tags:</label>
+                <select name="tags-filter" id="tag-filter" required>
+                    <option value="all">All</option>
+                {% for tag in all_tags %}
+                    <option value="{{tag.id}}">
+                    {{tag.name}}
+                    </option>
+                {% endfor %}
+            </select>
+
+            </div>
+
+            <div>
+                <label for="sort-by-filter"> Sort:</label>
+                <select name="sort-by-filter" id="sort-by-filter" required>
+                    <option value="lowest">Price: Lowest</option>
+                    <option value="highest">Price: Highest</option>
+                    <option value="newest">Date: Newest</option>
+                    <option value="oldest">Date: Oldest</option>
+                </select>
+            </div>
+
+            <button class="button-2">Filter</button>
+
+        </form>
 
      </div>
 
-     <div>
-        <label for="sort by"> Sort:</label>
-        <select name="sort-by" id="sort-by" required>
-            <option value="/">Price: Lowest</option>
-            <option value="/">Price: Highest</option>
-            <option value="/">Date: Newest</option>
-            <option value="/">Date: Oldest</option>
-         </select>
 
-     </div>
  
 
 </div>

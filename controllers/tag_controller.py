@@ -34,7 +34,7 @@ def create_tag():
 @tags_blueprint.route("/tags/<id>/edit", methods=['POST'])
 def edit_tag(id):
     tag = tag_repository.select(id)
-    
+
     return render_template("/tags/edit.html", tag=tag)
 
 
