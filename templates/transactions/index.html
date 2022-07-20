@@ -9,13 +9,13 @@
     <div class="target-bar ie-1">
 
         <div class="target-plus-button">
-            Target: <br>
-            <b>£{{target_budget.amount}}</b>
+            Target
+            <p><b>£{{target_budget.amount}}</b></p>
 
         
-            <div>
-                <button><a href="/transactions/edit-target">Update</a></button>
-            </div>
+         
+        <button class="button-3"><a href="/transactions/edit-target">Update</a></button>
+         
         </div>
 
 
@@ -67,19 +67,20 @@
                     {{tag.name}}
                     </option>
                 {% endfor %}
-            </select>
+            
+                </select>
 
 
-                <label for="sort-by-filter"> Sort:</label>
+                <label for="sort-by-filter"> &nbsp Sort:</label>
                 <select name="sort-by-filter" id="sort-by-filter" required>
                     <option value="lowest" {% if sort_by_filter == "lowest" %} selected="selected" {% endif %}>Price: Lowest</option>
                     <option value="highest" {% if sort_by_filter == "highest" %} selected="selected" {% endif %}>Price: Highest</option>
                     <option value="newest" {% if sort_by_filter == "newest" %} selected="selected" {% endif %}>Date: Newest</option>
                     <option value="oldest" {% if sort_by_filter == "oldest" %} selected="selected" {% endif %}>Date: Oldest</option>
                 </select>
-            
+                
 
-            <button class="button-2">Filter</button>
+            <button class="button-2"> Filter</button>
 
         </form>
 
@@ -105,7 +106,7 @@
     
         {% for transaction in all_transactions %}
             <tr>
-                <td> {{transaction.tag.icon}} </td>
+                <td> <i class="fa-solid fa-money-check-dollar fa-2px"></i> </td>
                 <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} <br> </td>
                 <td>{{ transaction.date }}</td>
                 <td> <b>£{{ transaction.price }}</b></td>
