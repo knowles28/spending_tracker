@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
-from controllers.tag_controller import tags
 from models.transaction import Transaction
 from models.merchant import Merchant
 from models.tag import Tag
@@ -17,13 +16,17 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     tag_filter = request.args.get('tags', default='all')
+    # breakpoint()
     sort_by_filter = request.args.get('sort-by', default='newest')
     transactions = transaction_repository.select_all(tag_filter, sort_by_filter)
     total = transaction_repository.total()
-    target = budget_repository.select()
+    target_budget = budget_repository.select()
     tags = tag_repository.select_all()
+    
+    
+    print(tag_filter)
 
-    return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target, all_tags=tags)
+    return render_template("transactions/index.html", all_transactions=transactions, total=total, target_budget=target_budget, all_tags=tags, tag_filter=tag_filter, sort_by_filter=sort_by_filter)
 
 
 #EXTENSION - FILTERS W/ URL PARAMETERS

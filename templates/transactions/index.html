@@ -16,6 +16,15 @@
             <button><a href="/transactions/edit-target">Update</a></button>
         </div>
 
+        <div>
+            {% if target_budget.amount > total %}
+                ✅
+            {% else %}
+                ❌
+            {% endif %}
+
+        </div>
+
     </div>
 
     <div class="total-bar ie-2">
@@ -48,9 +57,10 @@
             <div>
                 <label for="tags-filter"> Tags:</label>
                 <select name="tags-filter" id="tag-filter" required>
-                    <option value="all">All</option>
+                    <option value="all" {% if tag_filter == "all" %} selected="selected" {% endif %}>All</option>
                 {% for tag in all_tags %}
-                    <option value="{{tag.id}}">
+                    <option value="{{tag.id}}" {% if tag_filter == "{{tag.id}}" %} selected="selected" {% endif %}>
+                        <!-- TAG VALUE??? FOLLOW TO FORM -->
                     {{tag.name}}
                     </option>
                 {% endfor %}
@@ -61,10 +71,10 @@
             <div>
                 <label for="sort-by-filter"> Sort:</label>
                 <select name="sort-by-filter" id="sort-by-filter" required>
-                    <option value="lowest">Price: Lowest</option>
-                    <option value="highest">Price: Highest</option>
-                    <option value="newest">Date: Newest</option>
-                    <option value="oldest">Date: Oldest</option>
+                    <option value="lowest" {% if sort_by_filter == "lowest" %} selected="selected" {% endif %}>Price: Lowest</option>
+                    <option value="highest" {% if sort_by_filter == "highest" %} selected="selected" {% endif %}>Price: Highest</option>
+                    <option value="newest" {% if sort_by_filter == "newest" %} selected="selected" {% endif %}>Date: Newest</option>
+                    <option value="oldest" {% if sort_by_filter == "oldest" %} selected="selected" {% endif %}>Date: Oldest</option>
                 </select>
             </div>
 
@@ -95,17 +105,18 @@
         {% for transaction in all_transactions %}
             <tr>
                 <td> Icon </td>
-                <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} </td>
+                <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} <br> </td>
                 <td>{{ transaction.date }}</td>
                 <td> <b>£{{ transaction.price }}</b></td>
                 <td class="table=buttons">
-                    <div class="buttons">
-                        <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
-                            <button>Edit</button>
-                        </form>
-                        <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
-                            <button><i class="fa fa-trash-o fa-2x"></i></button>
-                    </div>
+                    <form class="update-button" action="/transactions/{{transaction.id}}/edit" method="post">
+                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                    </form>
+            
+                </td>
+                <td>
+                    <form class="delete-button" action="/transactions/{{ transaction.id }}/delete" method="post">
+                        <button><i class="fa-solid fa-trash-can"></i></i></button>
                 </td>
             </tr>
         {% endfor %}

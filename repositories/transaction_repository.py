@@ -43,17 +43,6 @@ def select_all(tag_filter='all', sort_by_filter=None):
         results = run_sql(sql, values)
 
     
-                #    <option value="lowest">Price: Lowest</option>
-                    # <option value="highest">Price: Highest</option>
-                    # <option value="newest">Date: Newest</option>
-                    # <option value="oldest">Date: Oldest</option>
-
-
-
-
-
-    
-    
     
     for row in results:
         merchant = merchant_repository.select(row['merchant_id'])

@@ -11,7 +11,7 @@ def save(budget):
     return budget
 
 def select():
-    budget = None
+    budget = 0
     sql = "select * from budgets ORDER BY id DESC LIMIT 1"
     results = run_sql(sql)
     if results:

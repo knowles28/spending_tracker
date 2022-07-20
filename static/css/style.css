@@ -94,7 +94,10 @@ a:hover {
     padding: 20px;
     margin: 15px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0, 0.10)
+    box-shadow: 0 0 10px rgba(0,0,0, 0.10);
+    display: flex;
+    
+
 }
 
 .ie-2 {
@@ -139,6 +142,10 @@ a:hover {
 
 tr:hover {
     background-color: rgb(249, 249, 249);
+}
+
+td {
+    padding: 10px;
 }
 
 
