@@ -22,6 +22,11 @@ header {
     position: relative;
 }
 
+.main-content {
+    padding: 20px 40px;
+    width: 70vw;
+}
+
 .menu-sidebar {
     background-color: rgba(255, 255, 255, 0.932);
     padding-right: 80px;
@@ -76,16 +81,15 @@ a:hover {
     color: coral;
 }
 
-.main-content {
-    padding: 20px 40px;
 
-}
 
 
 .info-elements {
     display: flex;
     justify-content: space-around;
 }
+
+
 
 .ie-1 {
     background-color: white;
@@ -96,12 +100,20 @@ a:hover {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0, 0.10);
     display: flex;
+    justify-content: space-around;
+    align-items: center;
     
 
 }
 
+.target-plus-button {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .ie-2 {
-    background-color: rgb(194, 254, 234);
+    background-color: #c2feea;
     width: 25vh;
     border-radius: 15px;
     padding: 20px;
@@ -123,15 +135,17 @@ a:hover {
     border-radius: 15px;
     padding: 20px;
     margin: 15px;
-    width: 60vw;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0, 0.10)
 
     
+}
+
+.filter-form {
+    display: inline;
 }
 
 
@@ -156,7 +170,6 @@ td {
 .table-buttons {
     width: 20px;
 }
-
 
 
 .new-form {
