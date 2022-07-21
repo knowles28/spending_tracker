@@ -86,6 +86,20 @@ button {
 
 
 
+ .button-4 {
+    background-color: rgb(194, 254, 234);
+    border-radius: 15px;
+    overflow: hidden;
+    font-weight: bold;
+    width: 10vw;
+}
+.button-4 :hover {
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.10), 0 5px 5px 0 rgba(0,0,0,0.10);
+
+}
+
+
+
 ul {
     list-style-type: none;
     line-height: 40px;
@@ -242,4 +256,10 @@ td {
     margin: 15px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0,0,0, 0.15)
+}
+
+.help-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

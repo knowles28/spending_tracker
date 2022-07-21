@@ -52,22 +52,7 @@ def select_all(tag_filter='all', sort_by_filter=None):
     
     return transactions
 
-# def select_all():
-#     transactions = []
-#     sql = "SELECT * FROM transactions"
-#     results = run_sql(sql)
-    
-#     for row in results:
-#         merchant = merchant_repository.select(row['merchant_id'])
-#         tag = tag_repository.select(row['tag_id'])
-#         transaction = Transaction(merchant, row['description'], tag, row['price'], row['date'], row['id'])
-#         transactions.append(transaction)
-    
-#     return transactions
 
-
-def filtered_selected(sort, filter):
-    pass
 
 def select(id):
     transaction = None
@@ -107,40 +92,3 @@ def total():
         total += row.price
     
     return total
-
-
-# EXTENSIONS __________________________________________
-
-def update_budget(updated_target):
-    target = updated_target
-    return target
-
-def target_budget():
-    target = []
-    return target
-
-
-
-
-
-
-
-
-
-# ______________SQL DUMP____________
-
-
-    # SELECT transactions.*, merchants.merchant_name, tags.tag_name
-    # FROM transactions
-    # INNER JOIN merchants 
-    #     ON transactions.merchant_id = merchants.id
-    # INNER JOIN tags 
-    #     ON transactions.tag_id = tags.id
-
-
-
-# SELECT name FROM merchants
-# FROM merchants
-# INNER JOIN transactions.description
-# 	ON transactions.merchant_id = merchants.id
-# WHERE transactions.merchant_id = merchants.id

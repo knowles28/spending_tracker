@@ -4,7 +4,7 @@
 
 <h1 class="page-title">Merchants</h1>
 
-<div class="button-1 info-bar">
+<div class="button-4 ">
     <button><a href="/merchants/new">Add New</a></button>
 </div>
 
@@ -22,8 +22,10 @@
 
     {% for merchant in all_merchants %}        
         <tr>
+            <td>
+                <i class="fa-solid fa-building-circle-check"></i>            </td>
             <td> 
-                {{ merchant.name }}
+               <b> {{ merchant.name }} </b>
             </td>
 
             <td>

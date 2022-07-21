@@ -106,7 +106,7 @@
     
         {% for transaction in all_transactions %}
             <tr>
-                <td> <i class="fa-solid fa-money-check-dollar fa-2px"></i> </td>
+                <td> <i class="fa-solid fa-sterling-sign"></i></i> </td>
                 <td><b>{{ transaction.tag.name }}</b> <br> {{ transaction.merchant.name }} - {{ transaction.description }} <br> </td>
                 <td>{{ transaction.date }}</td>
                 <td> <b>£{{ transaction.price }}</b></td>
