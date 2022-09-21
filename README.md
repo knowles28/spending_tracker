@@ -16,7 +16,7 @@ This was my first solo project at CodeClan. The task was to create a full stack 
 
 ## Technologies
 
-These are the main technologies I used to contruct the project.
+These are the main technologies I used to contruct the project:
 
 * ![Python]
 * ![Flask]
@@ -31,7 +31,7 @@ These are the main technologies I used to contruct the project.
 
 **Spending Tracker**
 
-Build an app that allows a user to track their spending, highlighting the most common type of transactions they make
+Build an app that allows a user to track their spending, highlighting the most common type of transactions they make in their daily life.
 
 **MVP**
 
