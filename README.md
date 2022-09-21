@@ -1,20 +1,42 @@
-# spending_tracker
+# Spendless: Education App
+This was my first solo project at CodeClan. The task was to create a full stack app in 7 days using HTML/CSS, Python, Flask and PostgreSQL. We we not allowed to use Javascript for the project.
 
-# Overview
 
-## **Spending Tracker Project**
+### Contents 
 
-This was my first solo project at CodeClan. The task was to create a full stack app in 7 days using HTML/CSS, Python, Flask and PostgreSQL.
+* [Example coming soon!]
+* [Technologies](#technologies)
+* [Brief](#brief)
+* [Challenges](#challenges)
+* [Installation](#installation)
 
----
+<br>
 
-# Brief
 
-### **Spending Tracker**
+
+## Technologies
+
+These are the main technologies we used to contruct the project.
+
+* ![React.js]
+* ![Javascript]
+* ![Node]
+* ![MaterialUI]
+* ![MongoDB]
+* ![HTML]
+* ![css]
+* & Express!
+
+<br>
+
+
+## Brief
+
+**Spending Tracker**
 
 Build an app that allows a user to track their spending, highlighting the most common type of transactions they make
 
-### **MVP**
+**MVP**
 
 - A dashboard that displays all the transactions a user has made in a single view
     - showing each transaction description, amount, merchant, tag
@@ -23,31 +45,68 @@ Build an app that allows a user to track their spending, highlighting the most c
 - The app should allow the user to create and edit merchants
 - The app should allow the user to create and edit tags
 
-### **Inspired by:**
+**Inspired by:**
 
 - Starling, Monzo (mobile banking apps)
 
-### **Extensions**
+**Extensions**
 
-- Show transaction target amount
-- add images for merchants/tags
-- The user should be able to assign *Merchants* and *Tags* as deactivated. Users will not be able to choose deactivated merchants/tags when creating a transaction.
-- Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.
-- The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.
-- The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.
+- [x] The user should be able to assign *Merchants* and *Tags* as deactivated. Users will not be able to choose deactivated merchants/tags when creating a transaction.
+- [x] Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.
+- [x] The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.
+- [ ] add images for merchants/tags
+- [x] The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.
 
----
 
-# HOW TO RUN
+<br>
+
+
+## Challenges
+
+Here are some of the key learning points from my first solo project:
+
+* Filtering using URL parameters.
+* Using TDD effectively.
+* Bug tracking.
+* Planning REStful route.
+
+<br>
+
+
+## Installation
 
 *Instructions for Apple Terminal*
 
 - Clone the project:
-    - *git clone [https://github.com/knowles28/spending_tracker](https://github.com/knowles28/spending_tracker)*
+
+```git clone [https://github.com/knowles28/spending_tracker](https://github.com/knowles28/spending_tracker)```
+
 - Create the database:
-    - *createdb spending_tracker*
-    - *psql -d spending_tracker -f spending_tracker.sql*
+
+```createdb spending_tracker```
+```psql -d spending_tracker -f spending_tracker.sql```
+
 - Run the file and populate examples:
-    - *python3 console.py*
+
+```python3 console.py```
+
 - Open the client view from local host:
-    - flask run
+```flask run```
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[React.js]:https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Javascript]:https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[Node]:https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[MaterialUI]:https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
+[MongoDB]:https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
+[express]:[https://img.shields.io/badge/Express.js-404D59?style=for-the-badge](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+
+[HTML]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+
+[css]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+
+
